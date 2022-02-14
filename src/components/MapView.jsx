@@ -14,7 +14,7 @@ const icons = {
 }
 
 const MapView = (props) => {
- const {locations, mapCenter, isLoading } = props
+ const {locations, mapCenter, isLoading, onSelectMarker, onDeselectMarker, selectedMarker } = props
  const markerElement = locations?.map((l,i) => {
      const { id, country_code, country, province, coordinates:{ latitude, longitude }, latest: { confirmed } } = l
      let markerIcon = icons.xxSmall;
@@ -38,8 +38,18 @@ const MapView = (props) => {
             title = `${title} - ${province}`;
         }
 
+        function onClickMarker(id){
+            if(selectedMarker === null) onSelectMarker(id);
+            else if(selectedMarker.id !== id) onSelectMarker(id);
+            else onDeselectMarker();
+        }
+
         return (
-            <Marker key={`${id}-${country_code}`} position={[latitude, longitude]} icon={markerIcon}>
+            <Marker 
+                key={`${id}-${country_code}`} 
+                position={[latitude, longitude]} 
+                icon={markerIcon}
+                onClick={()=>onClickMarker([latitude, longitude])}>
                 <Popup>{title}</Popup>
             </Marker>
         );

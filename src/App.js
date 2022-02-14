@@ -71,7 +71,14 @@ function App() {
           selectedLocation={selectedLocation}
           onSelectItem={onSelection}
           onDeselectItem={onDeselectLocation}/>
-      <MapView locations={locations} mapCenter={mapCenter} isLoading={ isLoading }/>
+      <MapView 
+          locations={locations} 
+          mapCenter={mapCenter} 
+          selectedMarker={setMapCenter}
+          isLoading={ isLoading }
+          onSelectMarker={onSelection}
+          onDeselectMarker={onDeselectLocation}
+          />
       {detailsView}
     </div>
   );
