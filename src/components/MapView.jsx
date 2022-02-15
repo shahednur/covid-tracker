@@ -1,7 +1,6 @@
 import React from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import { divIcon } from 'leaflet'
-import { FadeLoader } from 'react-spinners';
 
 const icons = {
     xxSmall: divIcon({className:'marker-icon pink',iconSize:[12,12]}),
@@ -14,7 +13,7 @@ const icons = {
 }
 
 const MapView = (props) => {
- const {locations, mapCenter, isLoading, onSelectMarker, onDeselectMarker, selectedMarker } = props
+ const {locations, mapCenter, onSelectMarker, onDeselectMarker, selectedMarker } = props
  const markerElement = locations?.map((l,i) => {
      const { id, country_code, country, province, coordinates:{ latitude, longitude }, latest: { confirmed } } = l
      let markerIcon = icons.xxSmall;

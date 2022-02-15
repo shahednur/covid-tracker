@@ -16,11 +16,11 @@ function App() {
   const [isError, setIsError] = useState(false);
   const [mapCenter, setMapCenter]  = useState([25,106])
 
-  function sortedLocationArray(x) {
-    return [ ...x].sort((a, b) => {
-      return b.latest.confirmed - a.latest.confirmed;
-    });
-  }
+  // function sortedLocationArray(x) {
+  //   return [ ...x].sort((a, b) => {
+  //     return b.latest.confirmed - a.latest.confirmed;
+  //   });
+  // }
 
   const onSelection = useCallback((id) => {
     const selectLocation = locations.find(location => location.id === id);
@@ -62,7 +62,7 @@ function App() {
       setIsError(true);
     });
   }, []);
-      
+      isError && <div>Something went wrong ...</div>
   return (
     <div className="App">
       <Header 

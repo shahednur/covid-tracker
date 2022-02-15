@@ -22,7 +22,7 @@ const Header = (props) => {
     const totalElements = totalKey?.map(key => {
         let total = 0;
         locations?.map(l => {
-            total += l.latest[key];
+           return total += l.latest[key];
         });
         return (
             <li className="relative" id="sidenavSecEx3" key={key}>
